@@ -1,0 +1,82 @@
+Skip to content
+Product
+Solutions
+Open Source
+Pricing
+Search
+Sign in
+Sign up
+devfile-samples
+/
+devfile-sample-python-basic
+Public
+Code
+Issues
+1
+Pull requests
+Actions
+Projects
+Security
+Insights
+devfile-sample-python-basic/deploy.yaml
+@maysunfaisal
+maysunfaisal Update devfile deploy
+…
+Latest commit 1ed63ac on Nov 9, 2022
+ History
+ 1 contributor
+38 lines (38 sloc)  668 Bytes
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: my-python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+        - name: my-python
+          image: python-image:latest
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-python
+spec:
+ports:
+  - name: http-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+selector:
+  app: python-app
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+devfile-sample-python-basic/deploy.yaml at main · devfile-samples/devfile-sample-python-basic
