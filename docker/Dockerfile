@@ -8,4 +8,4 @@ EXPOSE 80
 
 ADD main.py .
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD python -m uvicorn main:app --host 0.0.0.0 --port 80
